@@ -1,106 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stock Market Basics – Join Free</title>
-  <meta name="description" content="100% free stock market education. Learn chart reading, technical analysis, and risk management. No buy/sell tips. For learning purpose only.">
-  <link rel="canonical" href="https://example.com/">
-
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade With Munaaf - Join Learning Community</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Favicons (optional) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Stock Market Basics – Join Free">
-  <meta property="og:description" content="Learn charts & risk management. No buy/sell tips. 100% educational.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1600&auto=format&fit=crop">
-
-  <!-- Minimal CSS (inline for speed) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    :root{
-      --bg1:#0c0c1d;
-      --bg2:#1a1a2b;
-      --brand: #00f0ff;
-      --brand-2:#00f0ff;
-      --text:#ffffff;
-      --muted:#b5b5c3;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #03070d;
+      overflow-x: hidden;
+      color: #e2e8f0;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url('https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1600&auto=format&fit=crop') no-repeat center/cover fixed;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
+
+    .font-heading {
+      font-family: 'Outfit', sans-serif;
     }
-    .container{
-      max-width:520px; margin:0 auto; padding:24px 18px; text-align:center; min-height:100vh; display:flex; flex-direction:column; justify-content:center;
-      backdrop-filter: saturate(130%);
+
+    /* Ambient animated radial glows in the background */
+    .ambient-glow-top {
+      position: fixed;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.22) 0%, rgba(138, 43, 226, 0.12) 50%, transparent 75%);
+      filter: blur(70px);
+      z-index: 0;
+      pointer-events: none;
+      animation: floatGlow 7s ease-in-out infinite alternate;
     }
-    .badge{display:inline-block; font-size:.78rem; padding:6px 10px; border:1px solid #2a2a3a; border-radius:999px; color:#d6eaff; background:rgba(0,240,255,.08); margin-bottom:14px}
-    h1{font-size:1.9rem; line-height:1.2; margin:6px 0 10px; background:linear-gradient(90deg,var(--brand-2),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-    .sub{font-size:1rem; color:var(--muted); margin:0 auto 16px; max-width:36ch}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,255,153,.07); border:1px dashed rgba(0,255,153,.35); color:#d8ffe9; font-size:.9rem; margin:6px 0 18px;
+
+    .ambient-glow-bottom {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(99, 102, 241, 0.12) 45%, transparent 75%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
     }
-    ul.bullets{list-style:none; padding:0; margin:0 0 18px}
-    ul.bullets li{margin:8px 0; color:#e9eef9}
-    .cta{
-      display:inline-block; text-decoration:none; background:var(--brand); color:#041b14; padding:14px 18px; font-weight:700; border-radius:12px; box-shadow:0 0 0 0 rgba(0,255,153,.6); transform:translateZ(0);
-      transition:transform .15s ease;
-      animation:pulse 1.6s infinite;
+
+    @keyframes floatGlow {
+      0% { transform: translateX(-50%) scale(1) translateY(0); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1.15) translateY(20px); opacity: 1; }
     }
-    .cta:active{transform:scale(.98)}
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(0,255,153,.55)}
-      70%{box-shadow:0 0 0 20px rgba(0,255,153,0)}
-      100%{box-shadow:0 0 0 0 rgba(0,255,153,0)}
+
+    /* Outer Card Neon Border with subtle pulse */
+    .neon-card-border {
+      border: 1.8px solid rgba(0, 225, 255, 0.85);
+      box-shadow: 
+        0 0 18px rgba(0, 212, 255, 0.45),
+        0 0 35px rgba(0, 212, 255, 0.18),
+        inset 0 0 14px rgba(0, 212, 255, 0.12);
+      transition: all 0.4s ease;
+      animation: borderPulse 4s ease-in-out infinite alternate;
     }
-    .fineprint{font-size:.86rem; color:var(--muted); margin:18px auto 0; max-width:44ch}
-    .disclaimer{font-size:.78rem; color:#9aa4b2; margin:18px auto 0; max-width:50ch}
-    .safe{display:flex; align-items:center; justify-content:center; gap:8px; margin-top:14px; color:#a1ffd6; font-size:.9rem}
-    .shield{width:18px; height:18px; display:inline-block; border-radius:4px; background:linear-gradient(135deg,#0df,#0f9)}
-    footer{opacity:.8; margin-top:22px; font-size:.78rem; color:#9aa4b2}
+
+    @keyframes borderPulse {
+      0% {
+        border-color: rgba(0, 212, 255, 0.8);
+        box-shadow: 0 0 16px rgba(0, 212, 255, 0.4), inset 0 0 12px rgba(0, 212, 255, 0.1);
+      }
+      100% {
+        border-color: rgba(56, 189, 248, 1);
+        box-shadow: 0 0 28px rgba(0, 225, 255, 0.65), inset 0 0 20px rgba(0, 212, 255, 0.2);
+      }
+    }
+
+    /* Profile Avatar Glow */
+    .avatar-glow {
+      box-shadow: 0 0 22px rgba(0, 212, 255, 0.75), 0 0 40px rgba(0, 180, 255, 0.4);
+      border: 2.5px solid #00e1ff;
+      animation: avatarPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes avatarPulse {
+      0% { transform: scale(1); box-shadow: 0 0 18px rgba(0, 212, 255, 0.65); }
+      100% { transform: scale(1.03); box-shadow: 0 0 30px rgba(0, 230, 255, 0.95); }
+    }
+
+    /* Animated Telegram Neon Button */
+    .btn-telegram {
+      background: linear-gradient(90deg, #00b8ff 0%, #2f80ed 48%, #9b51e0 100%);
+      background-size: 200% auto;
+      box-shadow: 0 0 22px rgba(0, 184, 255, 0.6), 0 4px 15px rgba(155, 81, 224, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: gradientShift 4s ease infinite;
+    }
+
+    .btn-telegram:hover, .btn-telegram:focus {
+      box-shadow: 0 0 32px rgba(0, 212, 255, 0.9), 0 6px 20px rgba(155, 81, 224, 0.6);
+      filter: brightness(1.08);
+    }
+
+    .btn-telegram:active {
+      transform: scale(0.97);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Agency Badge Box */
+    .agency-box {
+      border: 1px solid rgba(0, 212, 255, 0.32);
+      background: rgba(4, 16, 30, 0.7);
+      box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.08);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .agency-box:hover {
+      border-color: rgba(0, 212, 255, 0.65);
+      background: rgba(6, 22, 42, 0.9);
+    }
+
+    /* Modal Backdrop and Animation */
+    .modal-active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    .modal-content-active {
+      transform: scale(1) translateY(0) !important;
+      opacity: 1 !important;
+    }
+
+    /* Custom subtle scrollbar for modals */
+    .modal-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .modal-scroll::-webkit-scrollbar-track {
+      background: #090e17;
+      border-radius: 4px;
+    }
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background: #0ea5e9;
+      border-radius: 4px;
+    }
   </style>
 </head>
-<body>
-  <main class="container">
-    <span class="badge">100% Educational • Policy Safe</span>
-    <h1>Stock Market Basics – Join Free</h1>
-    <p class="sub">Learn index behaviour & risk management</p>
+<body class="min-h-screen flex items-center justify-center p-3 sm:p-5 relative select-none">
 
-    <div class="pill">🚫 No Buy/Sell Tips • ✅ For Learning Purpose Only</div>
+  <!-- Background decorative light effects -->
+  <div class="ambient-glow-top"></div>
+  <div class="ambient-glow-bottom"></div>
 
-    <ul class="bullets" aria-label="What you'll learn">
-      <li>• Chart basics & risk rules (no return promises)</li>
-      <li>• How to read trends without speculation</li>
-      <li>• Market discipline & common mistakes</li>
-    </ul>
+  <!-- Main Card Container (Mobile optimized) -->
+  <main class="relative z-10 w-full max-w-[390px] sm:max-w-[420px] neon-card-border bg-[#050911]/95 rounded-[32px] sm:rounded-[38px] px-5 py-6 sm:px-7 sm:py-7 flex flex-col items-center backdrop-blur-xl">
+    
+    <!-- Profile / Logo Avatar -->
+    <div class="relative mb-4">
+      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden avatar-glow p-0.5 bg-black">
+        <img 
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
+          alt="Trade With Munaaf Logo" 
+          id="profile-img"
+          class="w-full h-full object-cover rounded-full"
+          onerror="this.src='https://placehold.co/240x240/071322/00e5ff?text=MUNAAF'"
+        />
+      </div>
+      <!-- Glowing live status dot -->
+      <span class="absolute bottom-1 right-1.5 w-3.5 h-3.5 bg-emerald-400 border-2 border-[#050911] rounded-full shadow-[0_0_8px_#10b981]"></span>
+    </div>
 
-    <!-- CTA goes to a page-specific bridge -->
-    <a class="cta" href="bridge-lp34.html" rel="nofollow">Start Learning</a>
+    <!-- Main Title -->
+    <h1 class="font-heading text-xl sm:text-2xl font-black tracking-wider text-white text-center uppercase mb-5 drop-shadow-[0_2px_10px_rgba(0,212,255,0.3)]">
+      TRADE WITH MUNAAF
+    </h1>
 
-    <div class="safe"><span class="shield" aria-hidden="true"></span> Ad Policy Friendly Content</div>
+    <!-- Features / Highlights List -->
+    <div class="w-full space-y-0 text-gray-200 mb-5 text-[13px] sm:text-[14px] font-medium tracking-wide">
+      
+      <!-- Item 1 -->
+      <div class="flex items-center gap-3 py-2.5 border-b border-gray-800/80 transition-colors hover:text-cyan-300">
+        <span class="text-lg filter drop-shadow">🌐</span>
+        <span>Learning &amp; Educational Sessions</span>
+      </div>
 
-    <p class="fineprint">We focus on concepts & frameworks suitable for beginners.</p>
-    <p class="disclaimer"><em>This website is for educational purposes only. We do not provide investment, trading, or financial advice.</em></p>
+      <!-- Item 2 -->
+      <div class="flex items-center gap-3 py-2.5 border-b border-gray-800/80 transition-colors hover:text-cyan-300">
+        <span class="text-lg filter drop-shadow">📊</span>
+        <span>Market Concepts &amp; Awareness</span>
+      </div>
 
-    <footer>© <span id="y"></span> Market Basics Learning Hub</footer>
+      <!-- Item 3 -->
+      <div class="flex items-center gap-3 py-2.5 border-b border-gray-800/80 transition-colors hover:text-cyan-300">
+        <span class="text-lg filter drop-shadow">💎</span>
+        <span>Chart Reading Concepts</span>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="flex items-center gap-3 py-2.5 transition-colors hover:text-cyan-300">
+        <span class="text-lg filter drop-shadow">💻</span>
+        <span>Educational Case Discussions</span>
+      </div>
+
+    </div>
+
+    <!-- Subtitle -->
+    <p class="text-xs text-gray-300 text-center font-normal mb-4 leading-relaxed tracking-wide px-2">
+      Join our learning community and grow your knowledge
+    </p>
+
+    <!-- Main CTA Button with provided Telegram link -->
+    <a 
+      href="https://t.me/+SM6EsklgOoc4ZmM1" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="btn-telegram w-full py-3.5 rounded-full text-white font-heading font-black text-center text-base sm:text-lg tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer select-none"
+    >
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.65-.53.81-1.08.5l-3.03-2.24-1.46 1.41c-.16.16-.3.3-.61.3l.22-3.08 5.61-5.07c.24-.22-.05-.34-.38-.13l-6.93 4.36-2.99-.93c-.65-.2-.66-.65.14-.96l11.7-4.51c.54-.2 1.01.13.8 1.06z"/>
+      </svg>
+      <span>JOIN TELEGRAM</span>
+    </a>
+
+    <!-- Hindi Motivational Quote -->
+    <div class="my-4 text-center px-1">
+      <p class="text-[12.5px] sm:text-[13.5px] text-gray-300 font-medium leading-relaxed">
+        नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।
+      </p>
+    </div>
+
+    <!-- Agency Badge / Pill Box -->
+    <div class="w-full agency-box rounded-2xl py-2.5 px-3 text-center cursor-default">
+      <p class="text-[11px] sm:text-xs text-gray-400 font-medium tracking-wide">
+        This Channel Advertise By <span class="text-[#00d4ff] font-bold tracking-wider hover:underline">AD BUILD AGENCY</span>
+      </p>
+    </div>
+
+    <!-- Footer Meta/Compliance Links -->
+    <footer class="mt-4 text-center text-[10.5px] text-gray-400 space-y-1">
+      <div class="flex items-center justify-center gap-2 font-medium">
+        <button onclick="openModal('terms-modal')" class="hover:text-cyan-400 transition-colors focus:outline-none">Terms</button>
+        <span class="text-gray-600">|</span>
+        <button onclick="openModal('privacy-modal')" class="hover:text-cyan-400 transition-colors focus:outline-none">Privacy</button>
+        <span class="text-gray-600">|</span>
+        <button onclick="openModal('disclaimer-modal')" class="hover:text-cyan-400 transition-colors focus:outline-none">Disclaimer</button>
+      </div>
+      <p class="text-[9.5px] sm:text-[10px] text-gray-400 max-w-[290px] mx-auto leading-tight">
+        This site is not part of Facebook™ or endorsed by Facebook™.
+      </p>
+    </footer>
+
   </main>
 
+  <!-- ==================== POPUP MODALS ==================== -->
+
+  <!-- Terms & Conditions Modal -->
+  <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none invisible transition-all duration-300">
+    <div class="relative w-full max-w-lg bg-[#0b1320] border border-cyan-500/40 rounded-2xl p-6 sm:p-7 shadow-[0_0_30px_rgba(0,212,255,0.25)] transform scale-95 transition-all duration-300 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-800">
+        <h3 class="text-lg font-bold text-cyan-400 font-heading">Terms &amp; Conditions</h3>
+        <button onclick="closeModal('terms-modal')" class="text-gray-400 hover:text-white p-1 text-xl font-bold transition-colors">✕</button>
+      </div>
+      <div class="mt-4 overflow-y-auto modal-scroll pr-2 text-xs sm:text-sm text-gray-300 space-y-3 leading-relaxed">
+        <p><strong class="text-white">1. Educational Nature:</strong> All content, discussions, charts, and materials shared within Trade With Munaaf channels are strictly for educational and informational purposes only.</p>
+        <p><strong class="text-white">2. No Investment Advice:</strong> We do not offer registered financial, investment, or advisory services. Any trading or investment decisions you make are entirely at your own discretion and risk.</p>
+        <p><strong class="text-white">3. User Responsibility:</strong> You acknowledge that financial markets carry inherent market risks. Past educational case discussions do not guarantee future performance.</p>
+        <p><strong class="text-white">4. Code of Conduct:</strong> Spamming, aggressive language, or unauthorized promotion in discussion forums will result in an immediate ban without warning.</p>
+      </div>
+      <div class="pt-4 mt-2 border-t border-gray-800 text-right">
+        <button onclick="closeModal('terms-modal')" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-all">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none invisible transition-all duration-300">
+    <div class="relative w-full max-w-lg bg-[#0b1320] border border-cyan-500/40 rounded-2xl p-6 sm:p-7 shadow-[0_0_30px_rgba(0,212,255,0.25)] transform scale-95 transition-all duration-300 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-800">
+        <h3 class="text-lg font-bold text-cyan-400 font-heading">Privacy Policy</h3>
+        <button onclick="closeModal('privacy-modal')" class="text-gray-400 hover:text-white p-1 text-xl font-bold transition-colors">✕</button>
+      </div>
+      <div class="mt-4 overflow-y-auto modal-scroll pr-2 text-xs sm:text-sm text-gray-300 space-y-3 leading-relaxed">
+        <p><strong class="text-white">1. Data Collection:</strong> We respect your privacy. This landing page does not store your personal banking details or confidential credentials.</p>
+        <p><strong class="text-white">2. Telegram Platform:</strong> By joining via Telegram, you interact under Telegram's official privacy and security terms and end-to-end encryption standards.</p>
+        <p><strong class="text-white">3. Third-Party Links:</strong> We do not sell, rent, or trade your personal interaction information to external data brokers.</p>
+        <p><strong class="text-white">4. Updates:</strong> Any revisions to this policy will be promptly reflected on this page.</p>
+      </div>
+      <div class="pt-4 mt-2 border-t border-gray-800 text-right">
+        <button onclick="closeModal('privacy-modal')" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-all">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Modal -->
+  <div id="disclaimer-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none invisible transition-all duration-300">
+    <div class="relative w-full max-w-lg bg-[#0b1320] border border-cyan-500/40 rounded-2xl p-6 sm:p-7 shadow-[0_0_30px_rgba(0,212,255,0.25)] transform scale-95 transition-all duration-300 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-800">
+        <h3 class="text-lg font-bold text-cyan-400 font-heading">Disclaimer &amp; Disclosure</h3>
+        <button onclick="closeModal('disclaimer-modal')" class="text-gray-400 hover:text-white p-1 text-xl font-bold transition-colors">✕</button>
+      </div>
+      <div class="mt-4 overflow-y-auto modal-scroll pr-2 text-xs sm:text-sm text-gray-300 space-y-3 leading-relaxed">
+        <p class="text-amber-300/90 font-medium">⚠️ Important Market Disclaimer:</p>
+        <p>Trading in stocks, options, futures, and currency markets involves significant risk of capital loss and is not suitable for every investor. Please evaluate your financial objectives before engaging in capital activities.</p>
+        <p><strong class="text-white">SEBI Non-Registration Note:</strong> We are not SEBI registered research analysts or advisors. All materials are created strictly to share academic and technical chart patterns for self-learning purposes.</p>
+        <p><strong class="text-white">Facebook Disclaimer:</strong> This site is strictly independent and not affiliated with, authorized, maintained, sponsored, or endorsed by Facebook, Inc. or Meta Platforms, Inc.</p>
+      </div>
+      <div class="pt-4 mt-2 border-t border-gray-800 text-right">
+        <button onclick="closeModal('disclaimer-modal')" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-all">I Agree</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript logic -->
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Open Modal
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('modal-active');
+        const content = modal.firstElementChild;
+        if (content) {
+          content.classList.add('modal-content-active');
+        }
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Close Modal
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('modal-active');
+        const content = modal.firstElementChild;
+        if (content) {
+          content.classList.remove('modal-content-active');
+        }
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal on backdrop click
+    document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    // Close modal with Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
   </script>
 </body>
 </html>
